@@ -1,0 +1,18 @@
+<h1>Show Despesa</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @despesa.name %>
+  </li>
+
+  <li>
+    <strong>Value:</strong>
+    <%= @despesa.value %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.despesa_path(@conn, :edit, @despesa) %></span> |
+<span><%= link "Back", to: Routes.despesa_path(@conn, :index) %></span>
