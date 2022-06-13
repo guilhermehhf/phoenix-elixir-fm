@@ -1,24 +1,28 @@
-<h1>Log in</h1>
+<h6 class="display-6">Log in</h6>
 
 <.form let={f} for={@conn} action={Routes.user_session_path(@conn, :create)} as={:user}>
+  
   <%= if @error_message do %>
     <div class="alert alert-danger">
       <p><%= @error_message %></p>
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+  <%= label f, :email, class: "form-label lead" %>
+  <%= email_input f, :email, required: true, class: "form-control" %>
 
-  <%= label f, :password %>
-  <%= password_input f, :password, required: true %>
+  <%= label f, :password, class: "form-label lead" %>
+  <%= password_input f, :password, required: true, class: "form-control" %>
 
   <div>
-    <%= submit "Log in" %>
+    <%= submit "Log in", class: "btn btn-primary my-2" %>
+    
   </div>
 </.form>
 
 <p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
+  <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-secondary btn-sm my-2" %> |
+  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-secondary btn-sm my-2" %>
 </p>
+
+

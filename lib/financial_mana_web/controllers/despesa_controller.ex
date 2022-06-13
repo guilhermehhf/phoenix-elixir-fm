@@ -1,11 +1,12 @@
 defmodule FinancialManaWeb.DespesaController do
   use FinancialManaWeb, :controller
-
+  # use FinancialMana.CurrentUser
   alias FinancialMana.Financial
   alias FinancialMana.Financial.Despesa
 
   def index(conn, _params) do
     despesas = Financial.list_despesas()
+    email = conn.assigns.current_user.email
     render(conn, "index.html", despesas: despesas)
   end
 

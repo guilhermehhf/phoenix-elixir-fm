@@ -4,8 +4,8 @@ defmodule FinancialMana.Repo.Migrations.CreateDespesas do
   def change do
     create table(:despesas) do
       add :user_id, references(:users, on_delete: :delete_all), null: false
-      add :name, :string
-      add :value, :integer
+      add :name, :string, null: false
+      add :value, :integer, null: false
 
       timestamps()
     end

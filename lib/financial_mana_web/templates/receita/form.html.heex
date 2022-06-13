@@ -5,15 +5,16 @@
     </div>
   <% end %>
 
-  <%= label f, :name %>
-  <%= text_input f, :name %>
+  <%= label f, :name, class: "form-label lead" %>
+  <%= text_input f, :name, class: "form-control" %>
   <%= error_tag f, :name %>
 
-  <%= label f, :value %>
-  <%= number_input f, :value %>
+  <%= label f, :value, class: "form-label lead" %>
+  <%= number_input f, :value, class: "form-control" %>
   <%= error_tag f, :value %>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit "Save", class: "btn btn-primary my-2" %>
+    <%= link "Cancel", to: Routes.receita_path(@conn, :index), class: "btn btn-danger my-2" %>
   </div>
 </.form>

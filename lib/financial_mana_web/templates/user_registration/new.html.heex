@@ -1,4 +1,4 @@
-<h1>Register</h1>
+<h6 class="display-6">Register</h6>
 
 <.form let={f} for={@changeset} action={Routes.user_registration_path(@conn, :create)}>
   <%= if @changeset.action do %>
@@ -7,20 +7,21 @@
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
-  <%= error_tag f, :email %>
 
-  <%= label f, :password %>
-  <%= password_input f, :password, required: true %>
-  <%= error_tag f, :password %>
+    <%= label f, :email, class: "form-label lead"%>
+    <%= email_input f, :email, required: true, class: "form-control" %>
+    <%= error_tag f, :email %>
+
+    <%= label f, :password, class: "form-label lead"%>
+    <%= password_input f, :password, required: true, class: "form-control" %>
+    <%= error_tag f, :password %>
 
   <div>
-    <%= submit "Register" %>
+    <%= submit "Register", class: "btn btn-primary my-2" %>
   </div>
 </.form>
 
 <p>
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %> |
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
+  <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: "btn btn-secondary btn-sm my-2"%> |
+  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-secondary btn-sm my-2" %>
 </p>
