@@ -1,12 +1,10 @@
 defmodule FinancialManaWeb.DespesaController do
   use FinancialManaWeb, :controller
-  # use FinancialMana.CurrentUser
   alias FinancialMana.Financial
   alias FinancialMana.Financial.Despesa
 
   def index(conn, _params) do
-    despesas = Financial.list_despesas()
-    email = conn.assigns.current_user.email
+    despesas = Financial.list_despesas(conn.assigns.current_user.id)
     render(conn, "index.html", despesas: despesas)
   end
 
@@ -54,7 +52,7 @@ defmodule FinancialManaWeb.DespesaController do
 
   def delete(conn, %{"id" => id}) do
     despesa = Financial.get_despesa!(id)
-    {:ok, _despesa} = Financial.delete_despesa(despesa)
+    {:ok, despesa} = Financial.delete_despesa(despesa)
 
     conn
     |> put_flash(:info, "Despesa deleted successfully.")

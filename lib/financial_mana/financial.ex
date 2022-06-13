@@ -7,6 +7,7 @@ defmodule FinancialMana.Financial do
   alias FinancialMana.Repo
 
   alias FinancialMana.Financial.Receita
+  alias FinancialMana.Accounts.User
 
   @doc """
   Returns the list of receitas.
@@ -17,8 +18,9 @@ defmodule FinancialMana.Financial do
       [%Receita{}, ...]
 
   """
-  def list_receitas do
-    Repo.all(Receita)
+  def list_receitas(user_id) do
+    user = Repo.get(User, user_id)
+    Repo.all(Ecto.assoc(user, :receitas))
   end
 
   @doc """
@@ -113,8 +115,9 @@ defmodule FinancialMana.Financial do
       [%Despesa{}, ...]
 
   """
-  def list_despesas do
-    Repo.all(Despesa)
+  def list_despesas(user_id) do
+    user = Repo.get(User, user_id)
+    Repo.all(Ecto.assoc(user, :despesas))
   end
 
   @doc """

@@ -1,28 +1,33 @@
 <h6 class="display-6">Listing Receitas</h6>
 
-<table>
-  <thead>
-    <tr>
-      <th class = "lead">Name</th>
-      <th class = "lead">Value</th>
+<span><%= link "New Receita", to: Routes.receita_path(@conn, :new), class: "btn btn-success btn-sm my-2" %></span>
 
-      <th></th>
+<table class="table table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" class = "lead">Name</th>
+      <th scope="col" class = "lead">Value</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-<%= for receita <- @receitas do %>
-    <tr>
-      <td><%= receita.name %></td>
-      <td><%= receita.value %></td>
+    <%= for receita <- @receitas do %>
+        <tr scope="row">
+          <td><%= receita.name %></td>
+          <td><%= receita.value %></td>
 
-      <td>
-        <span><%= link "Show", to: Routes.receita_path(@conn, :show, receita) %></span>
-        <span><%= link "Edit", to: Routes.receita_path(@conn, :edit, receita) %></span>
-        <span><%= link "Delete", to: Routes.receita_path(@conn, :delete, receita), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
+          <td>
+            <%= link "Show", to: Routes.receita_path(@conn, :show, receita), class: "btn btn-primary btn-sm my-2" %>
+          </td>
+          <td>
+            <%= link "Edit", to: Routes.receita_path(@conn, :edit, receita), class: "btn btn-success btn-sm my-2" %>
+          </td>
+          <td>
+            <%= link "Delete", to: Routes.receita_path(@conn, :delete, receita), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm my-2" %>
+          </td>
+        </tr>
+    <% end %>
   </tbody>
 </table>
-
-<span><%= link "New Receita", to: Routes.receita_path(@conn, :new), class: "btn btn-success btn-sm my-2" %></span>

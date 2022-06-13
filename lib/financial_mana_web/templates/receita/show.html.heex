@@ -1,18 +1,17 @@
-<h1>Show Receita</h1>
+<h6 class = "display-6">Show Receita</h6>
 
 <ul>
 
   <li>
-    <strong>Name:</strong>
+    <strong class= "lead">Name:</strong>
     <%= @receita.name %>
   </li>
 
   <li>
-    <strong>Value:</strong>
+    <strong class= "lead">Value:</strong>
     <%= @receita.value %>
   </li>
-
 </ul>
 
-<span><%= link "Edit", to: Routes.receita_path(@conn, :edit, @receita) %></span> |
-<span><%= link "Back", to: Routes.receita_path(@conn, :index) %></span>
+<%= link "Edit", to: Routes.receita_path(@conn, :edit, @receita), class: "btn btn-success my-2" %> |
+<%= link "Back", to: Routes.receita_path(@conn, :index), class: "btn btn-secondary my-2" %>

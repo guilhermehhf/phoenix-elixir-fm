@@ -5,14 +5,14 @@ defmodule FinancialMana.Financial.Receita do
   schema "receitas" do
     field :name, :string
     field :value, :integer
-
+    belongs_to :user, Account.User
     timestamps()
   end
 
   @doc false
   def changeset(receita, attrs) do
     receita
-    |> cast(attrs, [:name, :value])
-    |> validate_required([:name, :value])
+    |> cast(attrs, [:user_id,:name, :value])
+    |> validate_required([:user_id,:name, :value])
   end
 end

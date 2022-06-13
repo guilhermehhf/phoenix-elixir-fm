@@ -5,7 +5,7 @@ defmodule FinancialManaWeb.ReceitaController do
   alias FinancialMana.Financial.Receita
 
   def index(conn, _params) do
-    receitas = Financial.list_receitas()
+    receitas = Financial.list_receitas(conn.assigns.current_user.id)
     render(conn, "index.html", receitas: receitas)
   end
 
